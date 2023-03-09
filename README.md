@@ -695,13 +695,15 @@ Ejemplo de diseño AAA:
 
 # 12. Listas de elementos, filtros y elementos dentro de elementos
 
-En algunos escenarios debemos trabajar con lista de elementos, realizar busquedas sobre locator anidados o realizar acciones sobre elementos hijos del selector que tenemos disponible.
+En algunos escenarios debemos trabajar con lista de elementos, realizar búsquedas sobre locator anidados o realizar acciones sobre elementos hijos del selector que tenemos disponible.
 
-12.1. Agregar una variable privada dentro del page object `products-list.page.ts` con un selector que obtendra todos los elementos HTML de los productos.
+12.1. Agregar una variable privada dentro del page object `products-list.page.ts` con un selector que obtendrá todos los elementos HTML de los productos.
 
-12.2. Cree un método privado llamado `findProductByName` el cual debe retornar el contenedor (elemento HTML) del producto cuyo nombre se pasa por parametro. Puedes basarte en el comando **filter** de cypres, revisa la API de Cypress: [API de cypress](https://docs.cypress.io/api/api/table-of-contents.html)
+12.2. Cree un método privado llamado `findProductByName` el cual debe retornar el contenedor (a partir del selector del punto 12.1) del producto cuyo nombre se pasa por parametro. Puedes basarte en el comando **filter** de cypres, revisa la API de Cypress: [API de cypress](https://docs.cypress.io/api/api/table-of-contents.html)
 
-12.3. Modifica el método `addTShirtToCart()` para que reciba por parametro el nombre del producto. Usa el método creado previamente para darle click al boton de "Add to Cart" del producto. Puedes revisar el comando **find** the cypress.
+12.3. Modifica el método usado para seleccionar el item "Sauce Labs Bolt T-Shirt" (punto 3 del flujo propuesto en el módulo 8) para que reciba por parametro el nombre de cualquier producto, cambia el nombre de la función a `selectProduct()`. Usa el método para darle click al producto y navegar a su página. Puedes revisar el comando **find** the cypress.
+
+> **tip:** Dependiendo de como se haya implementado el punto 4 del flujo propuesto en el módulo 8, es posible que el selector se deba actualizar para añadir cualquiera de los elementos al carrito.
 
 12.4. Ejecuta las pruebas y verifica que pasen :heavy_check_mark:
 
