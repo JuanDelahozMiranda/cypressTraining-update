@@ -641,7 +641,7 @@ De esta manera debe reordenar la estructura de su test teniendo como referencia 
         cy.get(this.shoppingBtn).click();
     }
 
-    public AddItem():void{
+    public addItem():void{
         cy.get(this.itemBackPack_AddBtn).click();
     }
 
@@ -653,7 +653,7 @@ De esta manera debe reordenar la estructura de su test teniendo como referencia 
         cy.get(this.priceItem).should("have.text", messages);
     }
 
-    public DisplayContainer(): void {
+    public displayContainer(): void {
         cy.get(this.containerItems).should('be.visible');
     }
    }
@@ -680,11 +680,11 @@ Ejemplo de diseño AAA:
         homeContentPage.typePassword("secret_sauce");
         homeContentPage.goToLoginButton();
         //Action
-        productpage.DisplayContainer();
-        productpage.AddItem();
+        productPage.displayContainer();
+        productPage.addItem();
         //Assertion
-        productpage.verifyTitle("Sauce Labs Backpack");
-        productpage.verifyPrice("$29.99");
+        productPage.verifyTitle("Sauce Labs Backpack");
+        productPage.verifyPrice("$29.99");
     });
    ```
 
@@ -707,16 +707,53 @@ En algunos escenarios debemos trabajar con lista de elementos, realizar búsqued
 
 12.4. Ejecuta las pruebas y verifica que pasen :heavy_check_mark:
 
+  <details>
+   <summary><b><u>Posible solucion</u></b></summary>
+
+  ```js
+   #En nuestro archivo de selectores
+
+   private containerItems: string;
+   private availableItems: string;
+
+   constructor() {
+      this.containerItems = ".inventory_container";
+      this.availableItems = ".inventory_item_description";
+   }
+   private findProductByName(In_Item: string): any {
+        return cy.get(this.containerItems).find(this.availableItems).filter(`:contains("${In_Item}")`).find("button");
+   }
+
+   public findAndAddItem(In_Item: string):void{
+      this.findProductByName(In_Item).click();
+   }
+----------------------------------------------------------------------------
+   #En nuestro diseño de prueba
+
+   it("Byu t-shirt", () =>{
+     //Arrange
+     .
+     .
+     //Action
+     productPage.findAndAddItem("Sauce Labs Backpack");
+     //Assertion
+     .
+     .
+   });
+   ```
+  </details>
+
 12.5. Crear un pull request (PR), asignarle los revisores y esperar la aprobación o comentarios de mejora (incluya una captura de pantalla donde se evidencie que las pruebas están pasando). No olvide actualizar su rama `main` una vez el PR ha sido aprobado y se haya hecho el proceso de Squash and Merge.
 
 
 # 13. Mejorando los reportes - Mochawesome
 
-Algunas veces es bueno mejorar el reporte visual de la ejecución de nuestras pruebas, para eso agregaremos `mochawesome` y lo integraremos con cypress. Siga los siguientes pasos:
+Tan importante es el diseño como lo es el reporte visual de la ejecución de nuestras pruebas, para esto deberá configurar `mochawesome` en su proyecto. Siga los siguientes pasos:
 
-13.1. Instalaremos las siguientes dependencias:
+13.1. Instalación de las dependencias requeridas:
 
    ```bash
+   # Para instalar el mochawesome
    npm install mocha mochawesome cypress-mochawesome-reporter --save-dev
 
    # Para mantenr el reporte actual (en la terminal) y agregar mochawesome
@@ -727,9 +764,9 @@ Algunas veces es bueno mejorar el reporte visual de la ejecución de nuestras pr
    npm install mochawesome-report-generator --save-dev
    ```
 
-13.2. Agregamos la siguiente configuración a la seccion `e2e` del archivo `cypress.config.ts`:
+13.2. Adicione la siguiente configuración en el objeto `e2e` de su archivo `cypress.config.ts`:
 
-   ```javascript
+   ```json
    reporter: "cypress-multi-reporters",
    reporterOptions: {
      reporterEnabled: "mochawesome",
@@ -743,23 +780,27 @@ Algunas veces es bueno mejorar el reporte visual de la ejecución de nuestras pr
    },
    ```
 
-13.3. Agrega script en el `package.json` para limpiar la carpeta `cypress/reports`
+13.3. Adicione los siguientes comandos dentro del objeto `script` en su archivo `package.json` (estos se utilizaran para limpiar la carpeta `cypress/reports` y generar la información nueva):
 
-   **tip:** Ten en cuenta que el servidor de CI corre en linux.
-
-13.4. Agrega estos sripts para procesar el reporte generado al ejecutar las pruebas:
-
-   ```json
-   "combine:reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/report.json",
-   "generate:reports": "marge cypress/reports/report.json -f report -o cypress/reports",
+  ```json
+    "clean:reports": "rm cypress/results/*",
+    "combine:reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/report.json",
+    "generate:reports": "marge cypress/reports/report.json -f report -o cypress/reports",
+    "cypress:reports": "npm run cypress:run && npm run combine:reports && npm run generate:reports"
    ```
 
-13.5. Invetiga los hooks **pre** y **post** de npm para ejecutar scripts antes y despues de las pruebas:
+  **Tip:** Ten en cuenta que el servidor de CI (github Actions) se ejecuta en ambiente linux.
+
+  > resultado de ejecución del comando: npm run cypress:reports
+  ![run_reports](media/generate-report1.png)
+  ![result_reports](media/generate-report2.png)
+
+13.4. Investiga los hooks **pre** y **post** de npm para ejecutar scripts antes y despues de las pruebas:
 
    - **pre:** Limpiar el la carpeta de reportes
    - **post:** ejecutar los scripts para procesar el reporte generado por la ejecución de pruebas.
 
-13.6. Crear un pull request (PR), asignarle los revisores y esperar la aprobación o comentarios de mejora (incluya una captura de pantalla donde se evidencie que las pruebas están pasando). No olvide actualizar su rama `main` una vez el PR ha sido aprobado y se haya hecho el proceso de Squash and Merge.
+13.5. Crear un pull request (PR), asignarle los revisores y esperar la aprobación o comentarios de mejora (incluya una captura de pantalla donde se evidencie que las pruebas están pasando). No olvide actualizar su rama `main` una vez el PR ha sido aprobado y se haya hecho el proceso de Squash and Merge.
 
 
 # 14. Filling form
