@@ -385,7 +385,7 @@ En esta sección se configura la integración continua por medio de GitHub Actio
    1. Obtener nuestro repositorio (A esto se le conoce como checkout)
    2. Preparar el workflow para usar Node.js v16
    3. Instalar dependencias
-   4. Ejecutar el ánalisis de código estático
+   4. Ejecutar el análisis de código estático
    5. Ejecutar las pruebas E2E que hemos construido
 
   <b><u>Nota:</u></b> Intenta construir tu workflow, pero si te bloqueas, abajo tienes una sección con una posible solución
@@ -699,49 +699,13 @@ En algunos escenarios debemos trabajar con lista de elementos, realizar búsqued
 
 12.1. Agregar una(s) variable(s) privada(s) dentro del page object `products-list.page.ts` (obtenga los selectores de los elementos HTML en la página de productos).
 
-12.2. Cree un método privado llamado `findProductByName` el cual debera retornar el selector del elemento con el que desea interactuar (use como base el/los selector(es) del punto 12.1) donde el nombre del producto se pase como parámetro. Puedes basarte en el comando **filter** de cypress, revisá la documentación de Cypress: [API de cypress](https://docs.cypress.io/api/api/table-of-contents.html)
+12.2. Cree un método privado llamado `findProductByName` el cual deberá retornar el selector del elemento con el que desea interactuar (use como base el/los selector(es) del punto 12.1) donde el nombre del producto se pase como parámetro. Puedes basarte en el comando **filter** de cypress, revisá la documentación de Cypress: [API de cypress](https://docs.cypress.io/api/api/table-of-contents.html)
 
-12.3. Modifica el método usado para seleccionar el item "Sauce Labs Bolt T-Shirt" (punto 3 del flujo propuesto en el módulo 8) para que reciba por parámetro el nombre de cualquier producto. Tambien puede usar el método para darle click al producto y navegar a su página. Puedes revisar el comando **find** the cypress.
+12.3. Modifica el método usado para seleccionar el item "Sauce Labs Bolt T-Shirt" (punto 3 del flujo propuesto en el módulo 8) para que reciba por parámetro el nombre de cualquier producto. También puede usar el método para darle click al producto y navegar a su página. Puedes revisar el comando **find** the cypress.
 
 > **tip:** Dependiendo de como se haya implementado el punto 4 del flujo propuesto en el módulo 8, es posible que el selector se deba actualizar para añadir cualquiera de los elementos al carrito.
 
 12.4. Ejecuta las pruebas y verifica que pasen :heavy_check_mark:
-
-  <details>
-   <summary><b><u>Posible solución</u></b></summary>
-
-  ```js
-   #En nuestro archivo de selectores
-
-   private containerItems: string;
-   private availableItems: string;
-
-   constructor() {
-      this.containerItems = ".inventory_container";
-      this.availableItems = ".inventory_item_description";
-   }
-   private findProductByName(In_Item: string): any {
-        return cy.get(this.containerItems).find(this.availableItems).filter(`:contains("${In_Item}")`).find("button");
-   }
-
-   public findAndAddItem(In_Item: string):void{
-      this.findProductByName(In_Item).click();
-   }
-----------------------------------------------------------------------------
-   #En nuestro diseño de prueba
-
-   it("Buy a Backpack", () =>{
-     //Arrange
-     .
-     .
-     //Action
-     productPage.findAndAddItem("Sauce Labs Backpack");
-     //Assertion
-     .
-     .
-   });
-   ```
-  </details>
 
 12.5. Crear un pull request (PR), asignarle los revisores y esperar la aprobación o comentarios de mejora (incluya una captura de pantalla donde se evidencie que las pruebas están pasando). No olvide actualizar su rama `main` una vez el PR ha sido aprobado y se haya hecho el proceso de Squash and Merge.
 
