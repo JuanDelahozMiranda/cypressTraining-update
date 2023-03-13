@@ -89,9 +89,9 @@ Ten en cuenta tener estudiados ciertos conceptos importantes (te dejamos unos en
 2.4. Ejecutar en consola `npm init` y colocar la siguiente información:
 
    | Parámetro          | Valor |
-   | ------------------ | ------------------ |
+--------------------| ------------------ | ------------------ |
    | **Name**           | cypress-training   |
-   | **Versión**        | _[Por Defecto]_    |
+   | **Version**        | _[Por Defecto]_    |
    | **Description**    | This is a Workshop about Cypress |
    | **Entry Point**    | _[Por Defecto]_    |
    | **Test Command**   | `cypress open`     |
@@ -755,8 +755,10 @@ Tan importante es el diseño como lo es el reporte visual de la ejecución de nu
 
   <b>Resultado de ejecución del comando: npm run cypress:reports</b>
 
-> ![run_reports](media/generate-report1.png)
+  ![run_reports](media/generate-report1.png)
+
   ![result_reports](media/generate-report2.png)
+
   ![html_reports](media/html-report.png)
 
 13.4. Investiga los hooks **pre** y **post** de npm para ejecutar scripts antes y después de las pruebas:
