@@ -1,8 +1,8 @@
 # Workshop Cypress
 
-Bienvenido al Workshop de Cypress!!! Durante el taller exploraremos los conocimientos necesarios para construir pruebas automatizadas desde la interfaz gráfica (GUI) usando Cypress. Durante el taller exploraremos la configuración de un proyecto desde cero, prepararlo para un proceso de integración continua por medio de Github Actions, interactuar con diferentes componentes y mucho mas.
+Bienvenido al Workshop de Cypress!!! Durante el taller exploraremos los conocimientos necesarios para construir pruebas automatizadas desde la interfaz gráfica (GUI) usando Cypress. Durante el taller exploraremos la configuración de un proyecto desde cero, prepararlo para un proceso de integración continua por medio de Github Actions, interactuar con diferentes componentes y mucho más.
 
-Para el desarrollo del taller usaremos [GitHub](https://github.com/), [GitHub Flow](https://guides.github.com/introduction/flow/), [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions), [NodeJS](https://nodejs.org/en/), [Cypress](https://www.cypress.io/) y TypeScript para realizar la entrega del ejercicio practico.
+Para el desarrollo del taller usaremos [GitHub](https://github.com/), [GitHub Flow](https://guides.github.com/introduction/flow/), [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions), [NodeJS](https://nodejs.org/en/), [Cypress](https://www.cypress.io/) y TypeScript para realizar la entrega del ejercicio práctico.
 
 Ten en cuenta tener estudiados ciertos conceptos importantes (te dejamos unos enlaces :sunglasses:):
 
@@ -12,19 +12,19 @@ Ten en cuenta tener estudiados ciertos conceptos importantes (te dejamos unos en
 **Tips de GitHub Flow:**
 
 1. Para cada ejercicio crear una rama (Investiga: _gitflow naming conventions_ )
-2. Crea un Pull Request por cada punto (**Recuerda las interacciones como comentarios en ingles**)
-3. Despues de que se recibe aprobación de cada punto se debe hacer merge de la rama, utilizando squash.
-4. Antes de empezar un nuevo punto se debe hacer pull de main para asegurarnos que tenemos los ultimos cambios del anterior punto.
+2. Crea un Pull Request por cada punto (**Recuerda las interacciones como comentarios en inglés**)
+3. Después de que se recibe aprobación de cada punto se debe hacer merge de la rama, utilizando squash.
+4. Antes de empezar un nuevo punto se debe hacer pull de main para asegurarnos que tenemos los últimos cambios del anterior punto.
 
 ## Tabla de contenidos
 
 1. [Creación y configuración del repositorio](#1-creación-y-configuración-del-repositorio)
-1. [Configuracion inicial del proyecto](#2-configuracion-inicial-del-proyecto)
+1. [Configuración inicial del proyecto](#2-configuración-inicial-del-proyecto)
 1. [Instalación de Cypress](#3-instalación-de-cypress)
 1. [Creando la primera prueba](#4-creando-la-primera-prueba)
 1. [Configurando las pruebas con TypeScript](#5-configurando-las-pruebas-con-typescript)
-1. [Análisis de código estatico](#6-análisis-de-código-estatico)
-1. [Configurar Integración Continua (CI)](#7-configurar-integracion-continua-ci)
+1. [Análisis de código estático](#6-análisis-de-código-estático)
+1. [Configurar Integración Continua (CI)](#7-configurar-integración-continua-ci)
 1. [Selectores CSS](#8-selectores-css)
 1. [Page Object Model (POM)](#9-page-object-model-pom)
 1. [Mejorando los selectores](#10-mejorando-los-selectores)
@@ -39,13 +39,13 @@ Ten en cuenta tener estudiados ciertos conceptos importantes (te dejamos unos en
 
 # 1. Creación y configuración del repositorio
 
-1.1. Crear un repositorio en GitHub con el nombre de **cypress-training** (previo requisito disponer de una cuenta en GitHub, no seleccione ninguna opcion de inicializacion de repositorio).
+1.1. Crear un repositorio en GitHub con el nombre de **cypress-training** (previo requisito disponer de una cuenta en GitHub, no seleccione ninguna opción de inicialización de repositorio).
 
 1.2. Crear localmente una carpeta con el nombre de **cypress-training** y luego sitúese dentro de la carpeta.
 
-1.3. Crear el archivo **.gitignore** en la raíz del proyecto, luego ingrese a la página <https://www.toptal.com/developers/gitignore> y en el campo de texto digite su sistema operativo (ej: windows, osx, macos) y selecciónelo de la lista de autocompletar. Repita este paso para su entorno de desarrollo (ej:vscode, sublime, intellij, jetbrains), también agregue la palabra `node` y por ultimo `CypressIO`. Presione el botón "Create" para crear el archivo que contendrá una lista de carpetas y archivos de exclusión y copie su contenido dentro del archivo **.gitignore**.
+1.3. Crear el archivo **.gitignore** en la raíz del proyecto, luego ingrese a la página <https://www.toptal.com/developers/gitignore> y en el campo de texto digite su sistema operativo (ej: windows, osx, macos) y selecciónelo de la lista de autocompletar. Repita este paso para su entorno de desarrollo (ej:vscode, sublime, intellij, jetbrains), también agregue la palabra `node` y por último `CypressIO`. Presione el botón "Create" para crear el archivo que contendrá una lista de carpetas y archivos de exclusión y copie su contenido dentro del archivo **.gitignore**.
 
-1.4. A continuación realice el primer commit y suba los cambios en su repositorio remoto de GitHub, digitando los siguientes comandos en tu consola (cada linea es un comando distinto):
+1.4. A continuación realice el primer commit y suba los cambios en su repositorio remoto de GitHub, digitando los siguientes comandos en tu consola (cada línea es un comando distinto):
 
    ```bash
    echo "# cypress-training" >> README.md
@@ -70,13 +70,13 @@ Ten en cuenta tener estudiados ciertos conceptos importantes (te dejamos unos en
    - [JuanDelahozMiranda](https://github.com/JuanDelahozMiranda)
 
 
-# 2. Configuracion inicial del proyecto
+# 2. Configuración inicial del proyecto
 
 2.1. Instalar la versión `v16.X.0` (o superiores) de Node.js.
 
    **Notas:**
    - Recomendamos usar [nvm](https://github.com/nvm-sh/nvm) como manejador de versiones (Opcional).
-   - Necesariamente no tienes que instalar la version 16 de NodeJS, pero si recomendamos instalar una version LTS, hemos probado este workshop con las versiones `v14.X.0` ó `v16.X.0`.
+   - Necesariamente no tienes que instalar la versión 16 de NodeJS, pero si recomendamos instalar una versión LTS, hemos probado este workshop con las versiones `v14.X.0` ó `v16.X.0`.
 
 2.2. Crear una nueva rama local ejecutando por consola `git checkout -b setup`.
 
@@ -88,17 +88,17 @@ Ten en cuenta tener estudiados ciertos conceptos importantes (te dejamos unos en
 
 2.4. Ejecutar en consola `npm init` y colocar la siguiente información:
 
-   | Parámetro | Valor |
-   | ------------------ | --------------------------------------------- |
-   | **Name** | cypress-training |
-   | **Version** | _[Por Defecto]_ |
-   | **Description** | This is a Workshop about Cypress |
-   | **Entry Point** | _[Por Defecto]_ |
-   | **Test Command** | `cypress open` |
-   | **Git Repository** | _[Por Defecto]_ |
-   | **Keywords** | ui-testing, dojo, practice, cypress |
-   | **Author** | _[Su nombre]_ <_[Su correo]_> (_[su GitHub]_) |
-   | **License** | MIT |
+   | Parámetro          | Valor |
+--------------------| ------------------ | ------------------ |
+   | **Name**           | cypress-training   |
+   | **Version**        | _[Por Defecto]_    |
+   | **Description**    | This is a Workshop about Cypress |
+   | **Entry Point**    | _[Por Defecto]_    |
+   | **Test Command**   | `cypress open`     |
+   | **Git Repository** | _[Por Defecto]_    |
+   | **Keywords**       | ui-testing, dojo, practice, cypress |
+   | **Author**         | _[Su nombre]_ <_[Su correo]_> (_[su GitHub]_) |
+   | **License**        | MIT                |
 
 2.5. Realizar un commit donde incluya los archivos creados con el mensaje “setup project configuration” y subir los cambios al repositorio:
 
@@ -126,32 +126,32 @@ Ten en cuenta tener estudiados ciertos conceptos importantes (te dejamos unos en
    npm install -D cypress
    ```
 
-3.2. Esto instalará cypress dentro del **node_modules**. Para verificar que la instalacion fue exitosa e iniciar la configuracion, ejecutamos el siguiente comando:
+3.2. Esto instalará cypress dentro del **node_modules**. Para verificar que la instalación fue exitosa e iniciar la configuración, ejecutamos el siguiente comando:
 
    ```bash
    npm test
    ```
 
-   - Si te aparece un mensaje de Windows Defender similar al de la imagen, selecciona todas las opciones y presiona el boton Allow Access.
+   - Si te aparece un mensaje de Windows Defender similar al de la imagen, selecciona todas las opciones y presiona el botón Allow Access.
      ![allow access](media/allow-access.png)
 
-   - Después, se abrirá una ventana dandote la bienvenida Cypress. Te dara a escoger entre dos opciones (E2E Testing y Component Testing). Selecciona E2E Testing.
+   - Después, se abrirá una ventana dándote la bienvenida Cypress. Te dará a escoger entre dos opciones (E2E Testing y Component Testing). Selecciona E2E Testing.
      ![cypress install step 1](media/cypress-install-step-1.png)
 
-   - Luego, Cypress mostrará el contenido de 4 archivos que agregará a nuestro proyecto: `cypress.config.js`, `cypress\support\e2e.js`, `cypress\support\commands.js`, `cypress\fixtures\example.json`. Presiona el boton de continuar.
+   - Luego, Cypress mostrará el contenido de 4 archivos que agregará a nuestro proyecto: `cypress.config.js`, `cypress\support\e2e.js`, `cypress\support\commands.js`, `cypress\fixtures\example.json`. Presiona el botón de continuar.
      ![cypress install step 2](media/cypress-install-step-2.png)
 
-   - A continuación, Cypress te pedira que selecciones uno de los navegadores soportados. Seleccionaras `Chrome`, y luego presionaras el botón "Start E2E Testing in Chrome".
+   - A continuación, Cypress te pedirá que selecciones uno de los navegadores soportados. Seleccionarás `Chrome`, y luego presionarás el botón "Start E2E Testing in Chrome".
      ![cypress install step 3](media/cypress-install-step-3.png)
 
-   - Después, Cypress abrirá una ventana de Chrome y te pedira que elijas entre dos opciones. Selecciona "Scaffold example specs". Esto generará varios archivos de prueba, con ejemplos acerca de como utilizar cypress.
+   - Después, Cypress abrirá una ventana de Chrome y te pedirá que elijas entre dos opciones. Selecciona "Scaffold example specs". Esto generará varios archivos de prueba, con ejemplos acerca de como utilizar cypress.
      ![cypress install step 4](media/cypress-install-step-4.png)
 
-   - Por último, Cypress te mostrara todos los archivos que ha generado. Presiona el boton "Okay, I got it!"
+   - Por último, Cypress te mostrará todos los archivos que ha generado. Presiona el botón "Okay, I got it!"
 
 3.3. Selecciona alguno de los archivos que cypress ha generado, para ejecutar las pruebas de ejemplo. Es aquí donde vemos cómo funciona la magia de cypress. Una vez finalice, cerramos la ventana de cypress.
 
-3.4. Agregue a la seccion de cypress de su archivo **.gitignore** las siguientes líneas para no subir las pruebas que hacen parte del demo:
+3.4. Agregue a la sección de cypress de su archivo **.gitignore** las siguientes líneas para no subir las pruebas que hacen parte del demo:
 
    ```bash
    cypress/e2e/1-getting-started/*
@@ -160,7 +160,7 @@ Ten en cuenta tener estudiados ciertos conceptos importantes (te dejamos unos en
 
 3.5. Observar que se crea una carpeta llamada **cypress** con [la siguiente estructura](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Folder-Structure)
 
-3.6. Modificar el archivo `package.json` la propiedad `test` ubicada dentro de la seccion de `scripts` para que quede de la siguiente manera:
+3.6. Modificar el archivo `package.json` la propiedad `test` ubicada dentro de la sección de `scripts` para que quede de la siguiente manera:
 
    ```json
    "scripts": {
@@ -177,7 +177,7 @@ Ten en cuenta tener estudiados ciertos conceptos importantes (te dejamos unos en
 
 3.10. Una vez hemos obtenido la aprobación de los revisores, realizar el merge a la rama main seleccionando la opción “squash and merge” (squash te permite unir todos los commits en un solo, es más por un concepto de organización). Posteriormente, en su rama local "main" realice el pull para traer los cambios mergeados en el PR.
 
-> <b><u>Nota:</u></b> Recuerda que de aqui en adelante todo cambio/mejora (o punto por iniciar) que realices debera tener una rama propia.
+> <b><u>Nota:</u></b> Recuerda que de aquí en adelante todo cambio/mejora (o punto por iniciar) que realices deberá tener una rama propia.
 
 
 # 4. Creando la primera prueba
@@ -195,7 +195,7 @@ Una vez hemos ejecutado las pruebas de ejemplo, eliminamos las carpetas que cont
    });
    ```
 
-4.2. Ejecutar el comando `npm run test:open` para correr la prueba (deberas seleccionar la opcion "E2E Testing" y despues seleccionar nuevamente el navegador chrome y presionar el boton "Start E2E Testing in Chrome"). Una vez finalice y si todo está bien veremos que la prueba paso satisfactoriamente:
+4.2. Ejecutar el comando `npm run test:open` para correr la prueba (deberá seleccionar la opción "E2E Testing" y después seleccionar nuevamente el navegador chrome y presionar el botón "Start E2E Testing in Chrome"). Una vez finalice y si todo está bien veremos que la prueba paso satisfactoriamente:
 
    ![google spec result browser](media/google-spec-result.png)
 
@@ -204,7 +204,7 @@ Una vez hemos ejecutado las pruebas de ejemplo, eliminamos las carpetas que cont
 
 # 5. Configurando las pruebas con TypeScript
 
-5.1. Instalar las dependencias necesarias para la transpilación de nuestras pruebas escritas en TypeScript a JavaScript por medio de la instalacion de la dependencia de TypeScript.
+5.1. Instalar las dependencias necesarias para la transpilación de nuestras pruebas escritas en TypeScript a JavaScript por medio de la instalación de la dependencia de TypeScript.
 
    ```bash
    npm install --save-dev typescript
@@ -226,9 +226,9 @@ Una vez hemos ejecutado las pruebas de ejemplo, eliminamos las carpetas que cont
    }
    ```
 
-5.3. Cambiar el nombre y la extensión de nuestro archivo de configuracion `cypress.config.js` por `cypress.config.ts`.
+5.3. Cambiar el nombre y la extensión de nuestro archivo de configuración `cypress.config.js` por `cypress.config.ts`.
 
-  <b><u>Nota:</u></b> Si presenta problemas con la ejecucion de alguna prueba, te aparece un mensaje de error tipo "SecurityError: Blocked a frame with origin...", y reemplace el codigo existente por este:
+  <b><u>Nota:</u></b> Si presenta problemas con la ejecución de alguna prueba, te aparece un mensaje de error tipo "SecurityError: Blocked a frame with origin...", y reemplace el código existente por este:
 
 ```js
    import { defineConfig } from "cypress";
@@ -244,7 +244,7 @@ Una vez hemos ejecutado las pruebas de ejemplo, eliminamos las carpetas que cont
    });
    ```
 
-  > Te recomendamos visitar este enlace donde conoceras mas sobre como configurar el file: [Configuration File - Cypress](https://docs.cypress.io/guides/references/configuration)
+  > Te recomendamos visitar este enlace donde conocerás más sobre como configurar el file: [Configuration File - Cypress](https://docs.cypress.io/guides/references/configuration)
 
 5.4. Cambiar la extensión de nuestros archivos ubicados en la carpeta `support` por:
    - `commands.js` -> `commands.ts`
@@ -259,9 +259,9 @@ Una vez hemos ejecutado las pruebas de ejemplo, eliminamos las carpetas que cont
 5.6. Crear un pull request (PR), asignarle los revisores y esperar la aprobación o comentarios de mejora (incluya una captura de pantalla donde se evidencie que las pruebas están pasando). No olvide actualizar su rama `main` una vez el PR ha sido aprobado y se haya hecho el proceso de Squash and Merge.
 
 
-# 6. Análisis de código estatico
+# 6. Análisis de código estático
 
-6.1. Para realizar el análisis de código estatico usaremos la herramienta ESLint para validar un conjunto de reglas sobre el código de pruebas y mantener un estilo consistente. Para esto se debe instalar ESLint como dependecia de desarrollo, luego iniciar la configuración del linter y seguimos los pasos que aparecen en consola (ver respuestas sugeridas y gif):
+6.1. Para realizar el análisis de código estático usaremos la herramienta ESLint para validar un conjunto de reglas sobre el código de pruebas y mantener un estilo consistente. Para esto se debe instalar ESLint como dependencia de desarrollo, luego iniciar la configuración del linter y seguimos los pasos que aparecen en consola (ver respuestas sugeridas y gif):
 
    ```bash
    npm install eslint --save-dev
@@ -269,7 +269,7 @@ Una vez hemos ejecutado las pruebas de ejemplo, eliminamos las carpetas que cont
    ```
 
    <details>
-   <summary><b><u>Mostrar configuracion detallada eslint</u></b></summary>
+   <summary><b><u>Mostrar configuración detallada eslint</u></b></summary>
 
    ```bash
    Need to install the following packages:
@@ -308,7 +308,7 @@ Una vez hemos ejecutado las pruebas de ejemplo, eliminamos las carpetas que cont
 
   ![eslint-config](media/eslint-configuration.gif)
 
-6.2. Instalar una extension del linter para cypress que contiene reglas de estilo siguiendo las buenas practicas que sugiere cypress:
+6.2. Instalar una extensión del linter para cypress que contiene reglas de estilo siguiendo las buenas prácticas que sugiere cypress:
 
    ```bash
    npm install eslint-plugin-cypress --save-dev
@@ -355,22 +355,22 @@ Una vez hemos ejecutado las pruebas de ejemplo, eliminamos las carpetas que cont
    },
    ```
 
-6.5. Ejecutamos las pruebas por corriendo el comando test:open
+6.5. Ejecutamos las pruebas corriendo el comando test:open
 
    ```bash
    npm run test:open
    ```
 
-   > **Nota:** En caso de tener errores, algunos de ellos son posible arreglarlos autoáticamente añadiendo el argumento --fix, es decir, usamos `npm run lint -- --fix`.
+   > **Nota:** En caso de tener errores, algunos de ellos son posible arreglarlos automáticamente añadiendo el argumento --fix, es decir, usamos `npm run lint -- --fix`.
 
 6.6. Crear un pull request (PR), asignarle los revisores y esperar la aprobación o comentarios de mejora (incluya una captura de pantalla donde se evidencie que las pruebas están pasando). No olvide actualizar su rama `main` una vez el PR ha sido aprobado y se haya hecho el proceso de Squash and Merge.
 
 
-# 7. Configurar Integracion Continua (CI)
+# 7. Configurar Integración Continua (CI)
 
 En esta sección se configura la integración continua por medio de GitHub Actions, lo cual nos permitirá correr nuestras pruebas en un servidor remoto y validar continuamente que los cambios que vamos a ingresar a nuestra aplicación no han afectado su funcionamiento.
 
-7.1. Inicialmente modificar el siguiente script en el package.json para ejecutar todas las pruebas de `cypress/e2e/` sin tener que levantar la interfaz grafica del explorador. A esto le llamamos "headless mode":
+7.1. Inicialmente modificar el siguiente script en el package.json para ejecutar todas las pruebas de `cypress/e2e/` sin tener que levantar la interfaz gráfica del explorador. A esto le llamamos "headless mode":
 
    ```json
    "scripts": {
@@ -380,15 +380,15 @@ En esta sección se configura la integración continua por medio de GitHub Actio
      },
    ```
 
-7.2. Para crear la configuracion del workflow de GitHub actions, vamos a crear un archivo `main.yml` en el directorio `.github/workflows` que realice los siguientes `steps` cuando creamos o actualizamos un Pull Request:
+7.2. Para crear la configuración del workflow de GitHub actions, vamos a crear un archivo `main.yml` en el directorio `.github/workflows` que realice los siguientes `steps` cuando creamos o actualizamos un Pull Request:
 
    1. Obtener nuestro repositorio (A esto se le conoce como checkout)
    2. Preparar el workflow para usar Node.js v16
    3. Instalar dependencias
-   4. Ejecutar el analisis de codigo estatico
+   4. Ejecutar el análisis de código estático
    5. Ejecutar las pruebas E2E que hemos construido
 
-  <b><u>Nota:</u></b> Intenta construir tu workflow, pero si te bloqueas, abajo tienes una seccion con una posible solucion
+  <b><u>Nota:</u></b> Intenta construir tu workflow, pero si te bloqueas, abajo tienes una sección con una posible solución
 
    ```yml
    name: Continuous integration
@@ -423,12 +423,12 @@ En esta sección se configura la integración continua por medio de GitHub Actio
 
   <b><u>Nota:</u></b> El action de cypress ejecuta por default el comando `npm test`
 
-7.3. Crea el archivo `.nvmrc` y especifica la version de Node.js que deseas usar para la ejecución.
+7.3. Crea el archivo `.nvmrc` y especifica la versión de Node.js que deseas usar para la ejecución.
 
-7.4. Debido a que cypress por default graba videos de la ejecución de las pruebas es util desactivar esta funcionalidad para disminuir el tiempo de ejecución y el uso de recursos en el servidor del CI. Adicionalmente, configuraremos algunos parametros para tiempos de espera y desactivaremos temporalmente las capturas de pantalla debido a un [error](https://github.com/cypress-io/cypress/issues/5016) que aun no ha sido solucionado en las versiones recientes de cypress. Para esto se debe ingresar la siguiente configuración en el archivo `cypress.config.ts`
+7.4. Debido a que cypress por default graba videos de la ejecución de las pruebas es útil desactivar esta funcionalidad para disminuir el tiempo de ejecución y el uso de recursos en el servidor del CI. Adicionalmente, configuraremos algunos parámetros para tiempos de espera y desactivaremos temporalmente las capturas de pantalla debido a un [error](https://github.com/cypress-io/cypress/issues/5016) que aún no ha sido solucionado en las versiones recientes de cypress. Para esto se debe ingresar la siguiente configuración en el archivo `cypress.config.ts`
 
    ```js
-   // Codigo existente no modificar
+   // Código existente no modificar
    e2e: {
      // solo necesitas agregar estas dos propiedades, no incluir este comentario
      video: false,
@@ -441,7 +441,7 @@ En esta sección se configura la integración continua por medio de GitHub Actio
           config.pageLoadTimeout= 60000;
       return config;
     }
-     // Codigo existente no modificar
+     // Código existente no modificar
    ```
 
 7.5. Crear un pull request (PR), asignarle los revisores y esperar la aprobación o comentarios de mejora (incluya una captura de pantalla donde se evidencie que las pruebas están pasando). No olvide actualizar su rama `main` una vez el PR ha sido aprobado y se haya hecho el proceso de Squash and Merge.
@@ -449,9 +449,9 @@ En esta sección se configura la integración continua por medio de GitHub Actio
 
 # 8 Selectores CSS
 
-En esta sección debera realizar un flujo adicional que verifique las acciones requeridas para comprar una camiseta en el sitio: <https://www.saucedemo.com/>.
+En esta sección deberá realizar un flujo adicional que verifique las acciones requeridas para comprar una camiseta en el sitio: <https://www.saucedemo.com/>.
 
-:scroll: Un poco de teoria: Para interactuar con los elementos del DOM se pueden usar varios mecanismos como CSS selectors, XPATH, jquery+CSS. Cada uno de estos tiene diferentes beneficios como su performance, legibilidad o la complejidad de la query del elemento con el cual queremos interactuar. Usualmente los CSS selector suelen ser mas rapidos y confiables en la mayoria de navegadores sin embargo los XPATH permiten realizar busquedas de elementos mas complejas. Te recomendamos investigar las diferencias entre los tipos de selectores teniendo en cuenta factores como: manteniblidad, flexiblidad y velocidad de busqueda de un elemento.
+:scroll: Un poco de teoria: Para interactuar con los elementos del DOM se pueden usar varios mecanismos como CSS selectors, XPATH, jquery+CSS. Cada uno de estos tiene diferentes beneficios como su performance, legibilidad o la complejidad de la query del elemento con el cual queremos interactuar. Usualmente los CSS selector suelen ser más rápidos y confiables en la mayoría de navegadores sin embargo los XPATH permiten realizar búsquedas de elementos más complejas. Te recomendamos investigar las diferencias entre los tipos de selectores teniendo en cuenta factores como: manteniblidad, flexiblidad y velocidad de búsqueda de un elemento.
 
 A continuación lea y entienda detenidamente los pasos para automatizar el flujo de compra.
 
@@ -470,21 +470,21 @@ El flujo que debes testear es:
 - Sección de Información:
   - Digita "Cypress" como nombre (7)
   - Digita "Workshop" como apellido (8)
-  - Digita "00000" como codigo postal (9)
+  - Digita "00000" como código postal (9)
   - Realiza click en "Continue" (10)
-- Seccion de Revisión:
+- Sección de Revisión:
   - Realiza click en "Finish" (11)
-- Seccion Checkout Finalizado:
+- Sección Checkout Finalizado:
   - Verifica el mensaje en pantalla (12)
 
-> Usa como apoyo el siguiente material para conocer más en detalle del flujo esperado. (extrae los CSS selector de la UI manualmente, termina la prueba y correla local).
+> Usa como apoyo el siguiente material para conocer más en detalle del flujo esperado. (extrae los CSS selector de la UI manualmente, termina la prueba y córrela local).
 
   ![Buy_flow](media/buy_flow.gif)
 
-  > Visita este video: [Iniciando a automatizar con Cypress](https://www.youtube.com/watch?v=z6ZK_FC2lkE), donde aprenderas como obtener los elementos web desde Cypress. </br>
-  Este enlace para aprender mas sobre: [Selectores CSS](https://www.w3.org/wiki/CSS_/_Selectores_CSS).
+  > Visita este video: [Iniciando a automatizar con Cypress](https://www.youtube.com/watch?v=z6ZK_FC2lkE), donde aprenderás como obtener los elementos web desde Cypress. </br>
+  Este enlace para aprender más sobre: [Selectores CSS](https://www.w3.org/wiki/CSS_/_Selectores_CSS).
 
-8.1. Como Primer paso debe crear el archivo `buy-shirt.cy.ts` e incluir el siguiente codigo (recuerda completarlo segun el flujo requerido):
+8.1. Como Primer paso debe crear el archivo `buy-shirt.cy.ts` e incluir el siguiente código (recuerda completarlo según el flujo requerido):
 
 ```js
      describe("Buy a black t-shirt", () => {
@@ -509,7 +509,7 @@ El flujo que debes testear es:
 
 # 9 Page Object Model (POM)
 
-Page Object Model es un patron para mejorar la mantenibilidad de las pruebas ya que podemos establecer una capa intermedia entre las pruebas y UI de la aplicación, ya que los cambios que requieran las pruebas debido a cambios en la aplicación se pueden realizar rapidamente en el POM. Te recomendamos investigar el patrón y otros patrones útiles que puedan ser usados para el código de pruebas.
+Page Object Model es un patrón para mejorar la mantenibilidad de las pruebas ya que podemos establecer una capa intermedia entre las pruebas y UI de la aplicación, ya que los cambios que requieran las pruebas debido a cambios en la aplicación se pueden realizar rápidamente en el POM. Te recomendamos investigar el patrón y otros patrones útiles que puedan ser usados para el código de pruebas.
 
 A continuación realizar la transformación a POM, por medio de los siguientes pasos:
 
@@ -570,16 +570,16 @@ A continuación realizar la transformación a POM, por medio de los siguientes p
 
    > <b><u>Tip:</u></b> Agrega los page object al archivo "page/index.ts" para facilitar el import de cada page object en las pruebas.
 
-9.5. Ejecute las pruebas y verifica que pasen. Si alguna falla modificala usando los CSS locators y el tiempo de espera configurado hasta que pasen.
+9.5. Ejecute las pruebas y verifica que pasen. Si alguna falla modifícala usando los CSS locators y el tiempo de espera configurado hasta que pasen.
 
 9.6. Crear un pull request (PR), asignarle los revisores y esperar la aprobación o comentarios de mejora (incluya una captura de pantalla donde se evidencie que las pruebas están pasando). No olvide actualizar su rama `main` una vez el PR ha sido aprobado y se haya hecho el proceso de Squash and Merge.
 
 
 # 10. Mejorando los selectores
 
-En esta sección deberas personalizar los selectores que se estan usando para la prueba:
+En esta sección deberá personalizar los selectores que se estan usando para la prueba:
 
-  > Puedes apoyarte en estos recursos para entender un poco mas sobre selectores. </br>
+  > Puedes apoyarte en estos recursos para entender un poco más sobre selectores. </br>
   1- [Cypress Locator: How to locate web elements in Cypress](https://www.youtube.com/watch?v=h8zbcupvx6Y) </br>
   2- [Locators in Cypress](https://www.youtube.com/watch?v=w56cKguv3qo)</br>
   3- [Best practices Selecting Elements](https://docs.cypress.io/guides/references/best-practices#Selecting-Elements)
@@ -593,33 +593,33 @@ En esta sección deberas personalizar los selectores que se estan usando para la
        this.element3 = "input[type='submit']";
    ```
 
-  - Despues
+  - Después
   ```js
        this.element1 = ".firstName";
        this.element2 = "#sf-menu li";
        this.element3 = "#submit";
    ```
 
-  > <b><u>Nota:</u></b> El revisor comentará los selectores con los que puede no esta de acuerdo, en ese caso, justifique su propesta de selector. (No use **XPATH**)
+  > <b><u>Nota:</u></b> El revisor comentará los selectores con los que puede no estar de acuerdo, en ese caso, justifique su propuesta de selector. (No use **XPATH**)
 
 10.2. Crear un pull request (PR), asignarle los revisores y esperar la aprobación o comentarios de mejora (incluya una captura de pantalla donde se evidencie que las pruebas están pasando). No olvide actualizar su rama `main` una vez el PR ha sido aprobado y se haya hecho el proceso de Squash and Merge.
 
 
 # 11. AAA pattern
 
-Como parte de las buenas practicas para diseñar pruebas encontramos el patrón AAA que nos ayuda a definir una estructura ordenada para cada prueba, por medio de 3 pasos:
+Como parte de las buenas prácticas para diseñar pruebas encontramos el patrón AAA que nos ayuda a definir una estructura ordenada para cada prueba, por medio de 3 pasos:
 
-- **Arrange**: Preparar las condiciones necesarias para ejecutar la prueba, ej: Datos de la prueba, carga de pagina donde se ejecuta la prueba.
-- **Action**: Es la acción del usuario que realmente vamos a probar, Ej: llenar formularios, navegar a otra pagina, hacer clicks.
+- **Arrange**: Preparar las condiciones necesarias para ejecutar la prueba, ej: Datos de la prueba, carga de página donde se ejecuta la prueba.
+- **Action**: Es la acción del usuario que realmente vamos a probar, Ej: llenar formularios, navegar a otra página, hacer clicks.
 - **Assert**: Verificamos los comportamientos esperados. Ej: Se muestre cierta información, guardado de datos, actualización de datos, mensajes de error, etc...
 
 > Visita tambien para conocer un poco sobre: [AAA - CodeLapps](http://codelapps.com/code/anatomia-de-una-prueba-unitaria/)
 
 De esta manera debe reordenar la estructura de su test teniendo como referencia el patrón AAA:
 
-11.1. Primero verifique que cuenta con las clases para cada page usando Page Object (recuerde que al crear un `nombre/pagina.page.ts` que contenga los selectores, debe ser agregado al `index.ts`).
+11.1. Primero verifique que cuenta con las clases para cada page usando Page Object (recuerde que al crear un `nombre/página.page.ts` que contenga los selectores, debe ser agregado al `index.ts`).
 
-  > <b><u>nota:</u></b> Estos selectores no estan optimizados esta tarea debe realizarlo en el apartado anterior.
+  > <b><u>nota:</u></b> Estos selectores no están optimizados, esta tarea debe realizarlo en el apartado anterior.
 
    ```js
    class ProductsContentPage {
@@ -641,7 +641,7 @@ De esta manera debe reordenar la estructura de su test teniendo como referencia 
         cy.get(this.shoppingBtn).click();
     }
 
-    public AddItem():void{
+    public addItem():void{
         cy.get(this.itemBackPack_AddBtn).click();
     }
 
@@ -653,14 +653,14 @@ De esta manera debe reordenar la estructura de su test teniendo como referencia 
         cy.get(this.priceItem).should("have.text", messages);
     }
 
-    public DisplayContainer(): void {
+    public displayContainer(): void {
         cy.get(this.containerItems).should('be.visible');
     }
    }
    export { ProductsContentPage }
    ```
 
-11.2. A continuación deberá estructura su archivo de ejecución principal, puedes basarte en este ejemplo.
+11.2. A continuación deberá estructurar su archivo de ejecución principal, puedes basarte en este ejemplo.
 Ejemplo de diseño AAA:
 
    ```js
@@ -680,28 +680,28 @@ Ejemplo de diseño AAA:
         homeContentPage.typePassword("secret_sauce");
         homeContentPage.goToLoginButton();
         //Action
-        productpage.DisplayContainer();
-        productpage.AddItem();
+        productPage.displayContainer();
+        productPage.addItem();
         //Assertion
-        productpage.verifyTitle("Sauce Labs Backpack");
-        productpage.verifyPrice("$29.99");
+        productPage.verifyTitle("Sauce Labs Backpack");
+        productPage.verifyPrice("$29.99");
     });
    ```
 
 11.3. Crear un pull request (PR), asignarle los revisores y esperar la aprobación o comentarios de mejora (incluya una captura de pantalla donde se evidencie que las pruebas están pasando). No olvide actualizar su rama `main` una vez el PR ha sido aprobado y se haya hecho el proceso de Squash and Merge.
 
-> **tip:** Recuerda aplicar los Page Object al construir la prueba. Probablemente requieras agregar metodos adicionales.
+> **tip:** Recuerda aplicar los Page Object al construir la prueba. Probablemente requieras agregar métodos adicionales.
 
 
 # 12. Listas de elementos, filtros y elementos dentro de elementos
 
 En algunos escenarios debemos trabajar con lista de elementos, realizar búsquedas sobre locator anidados o realizar acciones sobre elementos hijos del selector que tenemos disponible.
 
-12.1. Agregar una variable privada dentro del page object `products-list.page.ts` con un selector que obtendrá todos los elementos HTML de los productos.
+12.1. Agregar una(s) variable(s) privada(s) dentro del page object `products-list.page.ts` (obtenga los selectores de los elementos HTML en la página de productos).
 
-12.2. Cree un método privado llamado `findProductByName` el cual debe retornar el contenedor (a partir del selector del punto 12.1) del producto cuyo nombre se pasa por parametro. Puedes basarte en el comando **filter** de cypres, revisa la API de Cypress: [API de cypress](https://docs.cypress.io/api/api/table-of-contents.html)
+12.2. Cree un método privado llamado `findProductByName` el cual deberá retornar el selector del elemento con el que desea interactuar (use como base el/los selector(es) del punto 12.1) donde el nombre del producto se pase como parámetro. Puedes basarte en el comando **filter** de cypress, revisá la documentación de Cypress: [API de cypress](https://docs.cypress.io/api/api/table-of-contents.html)
 
-12.3. Modifica el método usado para seleccionar el item "Sauce Labs Bolt T-Shirt" (punto 3 del flujo propuesto en el módulo 8) para que reciba por parametro el nombre de cualquier producto, cambia el nombre de la función a `selectProduct()`. Usa el método para darle click al producto y navegar a su página. Puedes revisar el comando **find** the cypress.
+12.3. Modifica el método usado para seleccionar el item "Sauce Labs Bolt T-Shirt" (punto 3 del flujo propuesto en el módulo 8) para que reciba por parámetro el nombre de cualquier producto. También puede usar el método para darle click al producto y navegar a su página. Puedes revisar el comando **find** the cypress.
 
 > **tip:** Dependiendo de como se haya implementado el punto 4 del flujo propuesto en el módulo 8, es posible que el selector se deba actualizar para añadir cualquiera de los elementos al carrito.
 
@@ -712,11 +712,12 @@ En algunos escenarios debemos trabajar con lista de elementos, realizar búsqued
 
 # 13. Mejorando los reportes - Mochawesome
 
-Algunas veces es bueno mejorar el reporte visual de la ejecución de nuestras pruebas, para eso agregaremos `mochawesome` y lo integraremos con cypress. Siga los siguientes pasos:
+Tan importante es el diseño como lo es el reporte visual de la ejecución de nuestras pruebas, para esto deberá configurar `mochawesome` en su proyecto. Siga los siguientes pasos:
 
-13.1. Instalaremos las siguientes dependencias:
+13.1. Instalación de las dependencias requeridas:
 
    ```bash
+   # Para instalar el mochawesome
    npm install mocha mochawesome cypress-mochawesome-reporter --save-dev
 
    # Para mantenr el reporte actual (en la terminal) y agregar mochawesome
@@ -727,9 +728,9 @@ Algunas veces es bueno mejorar el reporte visual de la ejecución de nuestras pr
    npm install mochawesome-report-generator --save-dev
    ```
 
-13.2. Agregamos la siguiente configuración a la seccion `e2e` del archivo `cypress.config.ts`:
+13.2. Adicione la siguiente configuración en el objeto `e2e` de su archivo `cypress.config.ts`:
 
-   ```javascript
+   ```json
    reporter: "cypress-multi-reporters",
    reporterOptions: {
      reporterEnabled: "mochawesome",
@@ -743,23 +744,31 @@ Algunas veces es bueno mejorar el reporte visual de la ejecución de nuestras pr
    },
    ```
 
-13.3. Agrega script en el `package.json` para limpiar la carpeta `cypress/reports`
+13.3. Adicione los siguientes comandos dentro del objeto `script` en su archivo `package.json` (estos se utilizaran para limpiar la carpeta `cypress/reports` y generar la información nueva):
 
-   **tip:** Ten en cuenta que el servidor de CI corre en linux.
-
-13.4. Agrega estos sripts para procesar el reporte generado al ejecutar las pruebas:
-
-   ```json
-   "combine:reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/report.json",
-   "generate:reports": "marge cypress/reports/report.json -f report -o cypress/reports",
+  ```json
+    "clean:reports": "rm cypress/results/*",
+    "combine:reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/report.json",
+    "generate:reports": "marge cypress/reports/report.json -f report -o cypress/reports",
+    "cypress:reports": "npm run cypress:run && npm run combine:reports && npm run generate:reports"
    ```
 
-13.5. Invetiga los hooks **pre** y **post** de npm para ejecutar scripts antes y despues de las pruebas:
+  <b>Resultado de ejecución del comando: npm run cypress:reports</b>
+
+  ![run_reports](media/generate-report1.png)
+
+  ![result_reports](media/generate-report2.png)
+
+  ![html_reports](media/html-report.png)
+
+13.4. Investiga los hooks **pre** y **post** de npm para ejecutar scripts antes y después de las pruebas:
 
    - **pre:** Limpiar el la carpeta de reportes
    - **post:** ejecutar los scripts para procesar el reporte generado por la ejecución de pruebas.
 
-13.6. Crear un pull request (PR), asignarle los revisores y esperar la aprobación o comentarios de mejora (incluya una captura de pantalla donde se evidencie que las pruebas están pasando). No olvide actualizar su rama `main` una vez el PR ha sido aprobado y se haya hecho el proceso de Squash and Merge.
+   **Tip:** Ten en cuenta que el servidor de CI (github Actions) se ejecuta en ambiente linux.
+
+13.5. Crear un pull request (PR), asignarle los revisores y esperar la aprobación o comentarios de mejora (incluya una captura de pantalla donde se evidencie que las pruebas están pasando). No olvide actualizar su rama `main` una vez el PR ha sido aprobado y se haya hecho el proceso de Squash and Merge.
 
 
 # 14. Filling form
@@ -769,7 +778,7 @@ Usualmente en las aplicaciones nos encontramos formularios que los usuarios debe
 **tip:** Recuerda crear un page object e implementar la prueba con el patrón AAA
 
 14.1. Visitar la página: [Formulario de pruebas automatización](https://demoqa.com/automation-practice-form)
-14.2. Construir un método que llene el formulario y de click en el boton de **submit**:
+14.2. Construir un método que llene el formulario y de click en el botón de **submit**:
 
    ```javascript
    const personalInformation = {
@@ -787,9 +796,9 @@ Usualmente en las aplicaciones nos encontramos formularios que los usuarios debe
 
    **tip:** Recuerda crear un page object e implementar la prueba con el patrón AAA
 
-   <summary><b><u>Nota:</u></b> Si tienes problemas con la ejecucion de las pruebas en esta pagina, te sale un mensaje de error de tipo "uncaught exception", click aqui para ver una solucion.</summary>
+   <summary><b><u>Nota:</u></b> Si tienes problemas con la ejecución de las pruebas en esta página, te sale un mensaje de error de tipo "uncaught exception", click aquí para ver una solución.</summary>
 
-   Agrega las siguientes lineas al final del archivo: `cypress/support/commands.ts`
+   Agrega las siguientes líneas al final del archivo: `cypress/support/commands.ts`
 
    ```javascript
    // Ignoring uncaught exceptions since errors from external apps should not stop de workshop
@@ -800,12 +809,12 @@ Usualmente en las aplicaciones nos encontramos formularios que los usuarios debe
    });
    ```
 
-14.3. Verifique el titulo del pop-up que aparece una vez se termina de diligenciar el formulario.
+14.3. Verifique el título del pop-up que aparece una vez se termina de diligenciar el formulario.
 
-  <b><u>Nota:</u></b> La verificacion anterior es sencilla de realizar, a continuacion, opcionalmente, proponemos dos verificaciones adicionales:
+  <b><u>Nota:</u></b> La verificación anterior es sencilla de realizar, a continuación, opcionalmente, proponemos dos verificaciones adicionales:
 
    - **mini-challenge:** Agregue la interacción con el campo de State y City.
-   - **Challenge:** En el modal, verifique que se muestra correctamente, la informacion que ingresó al enviar el formulario.
+   - **Challenge:** En el modal, verifique que se muestra correctamente, la información que ingresó al enviar el formulario.
 
 14.4. Crear un pull request (PR), asignarle los revisores y esperar la aprobación o comentarios de mejora (incluya una captura de pantalla donde se evidencie que las pruebas están pasando). No olvide actualizar su rama `main` una vez el PR ha sido aprobado y se haya hecho el proceso de Squash and Merge.
 
@@ -816,15 +825,15 @@ Usualmente nos podemos encontrar con la necesidad de subir archivos por medio de
 
 15.1. Instalar el plugin de cypress para subir archivos: [cypress-file-upload](https://www.npmjs.com/package/cypress-file-upload). Sigue las instrucciones de configuración.
 
-15.2. Crea el archivo `upload.page.ts` que contenga tres metodos:
+15.2. Crea el archivo `upload.page.ts` que contenga tres métodos:
 
    - Visitar la página de pruebas de subida de archivos: [upload-demo-site](https://the-internet.herokuapp.com/upload)
-   - Subir un archivo. Recibe como parametro el nombre del archivo almacenado en la carpeta: `cypress/fixtures`
-   - Obtener el elemento del titulo que contiene el nombre despues de subir
+   - Subir un archivo. Recibe como parámetro el nombre del archivo almacenado en la carpeta: `cypress/fixtures`
+   - Obtener el elemento del título que contiene el nombre después de subir
 
 15.3. Crea el archivo de pruebas `upload-download.cy.ts` y agrega una prueba para subir un archivo usando el page object creado anteriormente. Recuerda estructurar tu prueba con el pátron AAA.
 
-   **tip:** El patrón AAA es solo para ayudarnos a tener mas orden al diseñar y contruir nuestras pruebas.
+   **tip:** El patrón AAA es solo para ayudarnos a tener más orden al diseñar y contruir nuestras pruebas.
 
 15.4. Crear un pull request (PR), asignarle los revisores y esperar la aprobación o comentarios de mejora (incluya una captura de pantalla donde se evidencie que las pruebas están pasando). No olvide actualizar su rama `main` una vez el PR ha sido aprobado y se haya hecho el proceso de Squash and Merge.
 
@@ -836,10 +845,10 @@ Para esta sección descargaremos un archivo y verificaremos el contenido, realiz
 16.1. Construye la siguiente prueba en el archivo `upload-download.cy.ts`:
 
    - Visita la página: [download-demo-site](https://demoqa.com/upload-download)
-   - Descarga la imagen a traves del boton "Download".
+   - Descarga la imagen a traves del botón "Download".
    - Verifica que el archivo exista en la carpeta de descargas de Cypress.
 
-16.2. Crea el archivo `download.page.ts` con los método necesarios para construir la prueba automatica.
+16.2. Crea el archivo `download.page.ts` con los método necesarios para construir la prueba automática.
 
 16.3. Verifica que todas las pruebas pasen, además incluye los archivos que no se deben subir al `.gitignore`.
 
@@ -848,7 +857,7 @@ Para esta sección descargaremos un archivo y verificaremos el contenido, realiz
 
 # 17. Interactuando con IFrames
 
-Los iframes son elementos HTML que nos podemos encontrar comunmente en aplicaciones web antiguas, pero es bueno saber como interactuar con ellos. En esta sección interactuaremos, navegaremos y verificaremos data dentro de un iframe.
+Los iframes son elementos HTML que nos podemos encontrar comúnmente en aplicaciones web antiguas, pero es bueno saber como interactuar con ellos. En esta sección interactuaremos, navegaremos y verificaremos data dentro de un iframe.
 
 17.1. Primero instalaremos el siguiente plugin de cypress: [Cypress Iframe](https://www.npmjs.com/package/cypress-iframe). Sigue las instrucciones del link.
 
@@ -870,9 +879,9 @@ Los iframes son elementos HTML que nos podemos encontrar comunmente en aplicacio
 
 17.3. Crea un archivo de pruebas llamado `iframe.cy.ts` y construye las siguientes pruebas:
 
-   - Cuando un usuario navega a la pagina: [pagina iframe](https://www.w3schools.com/html/html_iframe.asp) se muestra un Iframe que tiene como titulo `HTML Tutorial`
+   - Cuando un usuario navega a la página: [página iframe](https://www.w3schools.com/html/html_iframe.asp) se muestra un Iframe que tiene como título `HTML Tutorial`
 
-   - **Optional:** Cuando un usuario navega a la pagina: [pagina iframe](https://www.w3schools.com/html/html_iframe.asp) se muestra un i-frame y cuando el usuario navega a la pagina de CSS al darle click en la barra de navegación, se carga la pagina de CSS dentro del IFrame con el titulo `CSS Tutorial`
+   - **Optional:** Cuando un usuario navega a la página: [página iframe](https://www.w3schools.com/html/html_iframe.asp) se muestra un i-frame y cuando el usuario navega a la página de CSS al darle click en la barra de navegación, se carga la página de CSS dentro del IFrame con el título `CSS Tutorial`
 
    **Challenge:** algunas pruebas pueden ser inestables por diferentes factores como latencias. Implementa una estrategia de retrys si encuentras alguna inestabilidad!
 
@@ -900,7 +909,7 @@ Hay muchos temas que puedes seguir aprendiendo y herramientas que puedes incluir
 
 ## Given - When - Then
 
-Otro estilo de escritura de pruebas muy similar al patron AAA que ya aprendimos es el Given-When-Then, aqui te dejamos un blog para que inicies tu estudio de este estilo y un link a una libreria para que lo lleves a la practica:
+Otro estilo de escritura de pruebas muy similar al patrón AAA que ya aprendimos es el Given-When-Then, aquí te dejamos un blog para que inicies tu estudio de este estilo y un link a una librería para que lo lleves a la práctica:
 
 - [Blog - Martin Fowler](https://martinfowler.com/bliki/GivenWhenThen.html)
-- [Libreria - Cucumber for cypress](https://www.npmjs.com/package/cypress-cucumber-preprocessor)
+- [Librería - Cucumber for cypress](https://www.npmjs.com/package/cypress-cucumber-preprocessor)
