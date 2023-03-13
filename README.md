@@ -89,7 +89,7 @@ Ten en cuenta tener estudiados ciertos conceptos importantes (te dejamos unos en
 2.4. Ejecutar en consola `npm init` y colocar la siguiente información:
 
    | Parámetro          | Valor |
---------------------| ------------------ | ------------------ |
+   | ------------------ | --------------------------------------------- |
    | **Name**           | cypress-training   |
    | **Version**        | _[Por Defecto]_    |
    | **Description**    | This is a Workshop about Cypress |
@@ -736,7 +736,7 @@ Tan importante es el diseño como lo es el reporte visual de la ejecución de nu
      reporterEnabled: "mochawesome",
      mochawesomeReporterOptions: {
        reportDir: "cypress/reports/mocha",
-       quite: true,
+       quiet: true,
        overwrite: false,
        html: false,
        json: true,
