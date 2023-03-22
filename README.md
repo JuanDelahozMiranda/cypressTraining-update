@@ -1,6 +1,6 @@
 # Workshop Cypress
 
-Bienvenido al Workshop de Cypress!!! Durante el taller exploraremos los conocimientos necesarios para construir pruebas automátizadas desde la interfaz gráfica (GUI) usando Cypress. Durante el taller exploraremos la configuración de un proyecto desde cero, prepararlo para un proceso de integración continua por medio de Github Actions, interactuar con diferentes componentes y mucho más.
+Bienvenido al Workshop de Cypress!!! Durante el taller exploraremos los conocimientos necesarios para construir pruebas automatizadas desde la interfaz gráfica (GUI) usando Cypress. Durante el taller exploraremos la configuración de un proyecto desde cero, prepararlo para un proceso de integración continua por medio de Github Actions, interactuar con diferentes componentes y mucho más.
 
 Para el desarrollo del taller usaremos [GitHub](https://github.com/), [GitHub Flow](https://guides.github.com/introduction/flow/), [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions), [NodeJS](https://nodejs.org/en/), [Cypress](https://www.cypress.io/) y TypeScript para realizar la entrega del ejercicio práctico.
 
@@ -775,7 +775,7 @@ Tan importante es el diseño como lo es el reporte visual de la ejecución de nu
 
 Usualmente en las aplicaciones nos encontramos formularios que los usuarios deben llenar para guardar información. En esta sección interactuaremos con algunos de los componentes más comunes que nos podemos encontrar.
 
-**Nota:** Crear un archivo **.cy.ts** (nuevo para su ejecución), utiliza page object e implementar la prueba con el patrón AAA.
+**Nota:** Crear un archivo **.cy.ts** (nuevo para su ejecución), utilizar page object e implementar la prueba con el patrón AAA.
 
 14.1. Visita la página: [Formulario de pruebas automatización](https://demoqa.com/automation-practice-form)
 
@@ -837,7 +837,7 @@ Usualmente nos podemos encontrar con la necesidad de subir archivos por medio de
 
 Para esta sección descargaremos un archivo y verificaremos el contenido, para interactuar con este tipo de tareas realizar lo siguiente:
 
-**Nota:** Crear un archivo **.cy.ts** (nuevo para su ejecución), utiliza page object e implementar la prueba con el patrón AAA.
+**Nota:** Crear un archivo **.cy.ts** (nuevo para su ejecución), utilizar page object e implementar la prueba con el patrón AAA.
 
 16.1. Construye la siguiente prueba en el archivo `upload-download.cy.ts`:
 
@@ -858,7 +858,7 @@ Los iframes son elementos HTML que nos podemos encontrar comúnmente en aplicaci
 
 17.1. Sigue las instrucciones de configuración para instalar el plugin de cypress: [Cypress Iframe](https://www.npmjs.com/package/cypress-iframe).
 
-**Nota:** Crear un archivo **.cy.ts** (nuevo para su ejecución), utiliza page object e implementar la prueba con el patrón AAA.
+**Nota:** Crear un archivo **.cy.ts** (nuevo para su ejecución), utilizar page object e implementar la prueba con el patrón AAA.
 
 17.2. Crea un archivo llamado `iframe.cy.ts`, luego construye la siguiente prueba:
 
