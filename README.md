@@ -845,7 +845,7 @@ Para esta sección descargaremos un archivo y verificaremos el contenido, para i
    - Descarga la imagen a traves del botón "Download".
    - Verifica que el archivo exista en la carpeta de descargas (de Cypress).
 
-16.2. Crea el archivo `download.page.ts` con los método necesarios para construir la prueba automatizada.
+16.2. Crea el archivo `download.page.ts` con los métodos necesarios para construir la prueba automatizada.
 
 16.3. Verifica que todas las pruebas pasen, además incluye en el archivo `.gitignore` los elementos que no deban subir al repositorio.
 
